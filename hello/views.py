@@ -4,7 +4,7 @@ from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 
 import dateutil.parser
-import feedparser
+import feedparser 
 
 @csrf_exempt
 def home(request):
