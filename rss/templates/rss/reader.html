@@ -1,0 +1,91 @@
+{% extends 'rss/base.html' %}
+
+
+
+
+{% block body %}
+
+<br />
+<form class="form-inline">
+
+
+<div class="form-group mx-sm-3 mb-2">
+
+<input type="text" class="form-control" placeholder="Paste your RSS URL here"
+
+name="url">
+
+<select class="custom-select mr-sm-2" name="sort">
+       <option selected>Sort feed by date</option>
+       <option value="1">No sorting</option>
+       <option value="2">Newest first</option>
+       <option value="3">Oldest first</option>
+     </select>
+
+<button type="submit" class="btn btn-primary">Fetch your feed!</button>
+</div>
+</form>
+
+<div >
+
+{% if feed %}
+
+<h2>{{ feed.feed.title }}</h2>
+
+{% if feed.entries %}
+
+{% for entry in feed.entries %}
+
+<div class="card">
+
+<div class="card-header">
+
+Article
+
+</div>
+
+<div class="card-body">
+
+<h5 class="card-title">Headline: {{ entry.title }}</h5>
+
+<p class="card-text">Description: {{ entry.description }}</p>
+
+{% for entry in entry.enclosures %}
+
+<img src="{{ entry.href }}" class="img-fluid" alt="">
+
+{% endfor %}
+
+<br />
+<a href="{{ entry.link }}" class="btn btn-primary">Open website</a>
+
+</div>
+
+</div><p>{{ entry.published }}</p>
+
+
+
+
+{% endfor %}
+
+{% endif %}
+
+{% else %}
+
+</div>
+
+<br />
+
+<p>Created by Kristian Toldy</p>
+
+{% endif %}
+
+
+
+
+{{ feed2 }}
+
+
+
+
+{% endblock %}
