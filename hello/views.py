@@ -23,7 +23,7 @@ def home(request):
 
             sort = request.GET['sort']
 
-            if sort == '2':
+            if sort == '2': 
                 published_sorted.reverse()
                 feed['entries'] = published_sorted
 
