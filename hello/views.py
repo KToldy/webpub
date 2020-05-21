@@ -5,7 +5,7 @@ from datetime import datetime
 import dateutil.parser
 import feedparser
 
-def index(request):
+def home(request):
 
     if request.GET.get("url"):
 
