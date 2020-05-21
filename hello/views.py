@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 import dateutil.parser
 import feedparser
 
+@csrf_exempt
 def home(request):
 
     if request.GET.get("url"):
@@ -23,7 +25,7 @@ def home(request):
 
             sort = request.GET['sort']
 
-            if sort == '2': 
+            if sort == '2':
                 published_sorted.reverse()
                 feed['entries'] = published_sorted
 
